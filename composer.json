@@ -24,8 +24,7 @@
     "extra": {
         "google/apiclient-services": [
             "Gmail",
-            "Calendar",
-            "OAuth2"
+            "Oauth2"
         ]
     }
 }
