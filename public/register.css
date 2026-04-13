@@ -1,0 +1,247 @@
+body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url(images/4k.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+form {
+    width: 440px;
+    min-height: max-content;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px 0 #33333391;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background: transparent;
+}
+
+.pass {
+    display: flex;
+    flex-direction: column;
+}
+
+.email {
+    padding: 10px 0;
+}
+
+label {
+    font-size: 16px;
+    font-weight: 100;
+    color: #fff;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+}
+
+.custom-btn {
+    width: 130px;
+    height: 40px;
+    color: #fff;
+    border-radius: 5px;
+    padding: 10px 25px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 500;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+    box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, .5),
+        7px 7px 20px 0px rgba(0, 0, 0, .1),
+        4px 4px 5px 0px rgba(0, 0, 0, .1);
+    outline: none;
+}
+
+.btn-3 {
+    background: rgb(0, 172, 238);
+    background: linear-gradient(0deg, rgba(0, 172, 238, 1) 0%, rgba(2, 126, 251, 1) 100%);
+    width: 100%;
+    height: 40px;
+    line-height: 42px;
+    padding: 0;
+    border: none;
+}
+
+.btn-3 span {
+    position: relative;
+    font-weight: bold;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.pass .input-group {
+    position: relative;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+}
+
+.pass .input-group .form-control {
+    width: 100%;
+}
+
+.divider {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 1rem 0;
+    color: #fff;
+    font-size: 13px;
+}
+
+.divider::before,
+.divider::after {
+    content: '';
+    flex: 1;
+    height: 0.5px;
+    background: rgba(0, 0, 0, 0.329);;
+}
+
+.pass .input-group a {
+    width: max-content;
+    text-decoration: none;
+    font-size: 14px;
+    position: absolute;
+    z-index: 1;
+    right: 0;
+    bottom: 10px;
+}
+
+.btn-3:before,
+.btn-3:after {
+    position: absolute;
+    content: "";
+    right: 0;
+    top: 0;
+    background: rgba(2, 126, 251, 1);
+    transition: all 0.3s ease;
+}
+
+.btn-3:before {
+    height: 0%;
+    width: 2px;
+}
+
+.btn-3:after {
+    width: 0%;
+    height: 2px;
+}
+
+.btn-3:hover {
+    background: transparent;
+    box-shadow: none;
+}
+
+.btn-3:hover:before {
+    height: 100%;
+}
+
+.btn-3:hover:after {
+    width: 100%;
+}
+
+.btn-3 span:hover {
+    color: rgba(2, 126, 251, 1);
+}
+
+.btn-3 span:before,
+.btn-3 span:after {
+    position: absolute;
+    content: "";
+    left: 0;
+    bottom: 0;
+    background: rgba(2, 126, 251, 1);
+    transition: all 0.3s ease;
+}
+
+.btn-3 span:before {
+    width: 2px;
+    height: 0%;
+}
+
+.btn-3 span:after {
+    width: 0%;
+    height: 2px;
+}
+
+.btn-3 span:hover:before {
+    height: 100%;
+}
+
+.btn-3 span:hover:after {
+    width: 100%;
+}
+
+.toggle-pw {
+    position: absolute;
+    width: 30px;
+    height: 35px;
+    z-index: 20;
+    top: 1px;
+    right: 2px;
+}
+
+.oauth-row {
+    display: flex;
+    justify-content: center;
+}
+
+.oauth-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 0.50rem;
+    width: 75%;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: #1a1a1a;
+    background: #faf9f6;
+    box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.18);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.oauth-btn:hover {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.oauth-icon {
+    width: 23px;
+    height: 23px;
+    flex-shrink: 0;
+}
+
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 14px;
+}
+
+.footer span {
+    color: #fff;
+}
+
+.footer a {
+    text-decoration: none;
+    font-weight: 400;
+}

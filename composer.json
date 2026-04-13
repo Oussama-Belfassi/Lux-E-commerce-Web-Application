@@ -1,0 +1,19 @@
+{
+    "name": "ussam/exe",
+    "autoload": {
+        "psr-4": {
+            "app\\": "./"
+        }
+    },
+    "authors": [
+        {
+            "name": "oussama",
+            "email": "o.belfassi7993@uca.ac.ma"
+        }
+    ],
+    "require": {
+        "vlucas/phpdotenv": "^5.6",
+        "phpmailer/phpmailer": "^7.0",
+        "google/apiclient": "^2.19"
+    }
+}
