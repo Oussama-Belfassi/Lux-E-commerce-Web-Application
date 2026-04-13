@@ -1,22 +1,28 @@
-FROM php:8.2-cli
+FROM php:8.2-apache
 
-# Install PDO MySQL extension
-RUN docker-php-ext-install pdo pdo_mysql mysqli
+RUN apt-get update && apt-get install -y \
+    zip \
+    unzip \
+    git \
+    && docker-php-ext-install pdo pdo_mysql mysqli mbstring \
+    && a2enmod rewrite
 
-# Install Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Set working directory
 WORKDIR /app
 
-# Copy all project files
 COPY . .
 
-# Install PHP dependencies
 RUN composer install --no-dev --optimize-autoloader
 
-# Expose port
-EXPOSE 8080
+RUN echo '<VirtualHost *:80>\n\
+    DocumentRoot /app/public\n\
+    <Directory /app/public>\n\
+        AllowOverride All\n\
+        Require all granted\n\
+    </Directory>\n\
+</VirtualHost>' > /etc/apache2/sites-available/000-default.conf
 
-# Start PHP server
-CMD php -S 0.0.0.0:$PORT -t public
+EXPOSE 80
+
+CMD ["apache2-foreground"]
