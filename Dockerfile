@@ -6,7 +6,9 @@ RUN apt-get update && apt-get install -y \
     git \
     libonig-dev \
     && docker-php-ext-install pdo pdo_mysql mysqli mbstring \
-    && a2enmod rewrite
+    && a2enmod rewrite \
+    && a2dismod mpm_event mpm_worker || true \
+    && a2enmod mpm_prefork
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
