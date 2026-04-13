@@ -4,14 +4,18 @@ require_once __DIR__ . '/vendor/autoload.php';
 
 use app\Database;
 
-$dotenv = Dotenv\Dotenv::createUnsafeMutable(__DIR__);
-$dotenv->safeLoad();
+// DO NOT load .env on Railway — variables are injected directly by the platform
+// Only load .env if we are running locally
+if (file_exists(__DIR__ . '/.env')) {
+    $dotenv = Dotenv\Dotenv::createUnsafeMutable(__DIR__);
+    $dotenv->safeLoad();
+}
 
-$dsn      = $_ENV['DB_DSN']      ?? getenv('DB_DSN')      ?? '';
-$user     = $_ENV['DB_USER']     ?? getenv('DB_USER')      ?? '';
-$password = $_ENV['DB_PASSWORD'] ?? getenv('DB_PASSWORD')  ?? '';
+$dsn      = getenv('DB_DSN')      ?: ($_ENV['DB_DSN']      ?? '');
+$user     = getenv('DB_USER')     ?: ($_ENV['DB_USER']      ?? '');
+$password = getenv('DB_PASSWORD') ?: ($_ENV['DB_PASSWORD']  ?? '');
 
-echo "DSN: " . ($dsn ?: 'NOT SET') . PHP_EOL;
+echo "DSN: "  . ($dsn  ?: 'NOT SET') . PHP_EOL;
 echo "USER: " . ($user ?: 'NOT SET') . PHP_EOL;
 echo "PASS: " . ($password ? 'SET' : 'NOT SET') . PHP_EOL;
 
