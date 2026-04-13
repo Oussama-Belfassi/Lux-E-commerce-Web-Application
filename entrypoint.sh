@@ -5,7 +5,11 @@ echo "=== DEBUG ==="
 echo "PORT variable: $PORT"
 echo "============="
 
-# Run migrations first
+# Fix MPM conflict at runtime
+a2dismod mpm_event mpm_worker 2>/dev/null || true
+a2enmod mpm_prefork 2>/dev/null || true
+
+# Run migrations
 php /app/Migrate.php
 
 # Fix Apache port binding
