@@ -4,6 +4,7 @@ RUN apt-get update && apt-get install -y \
     zip \
     unzip \
     git \
+    libonig-dev \
     && docker-php-ext-install pdo pdo_mysql mysqli mbstring \
     && a2enmod rewrite
 
