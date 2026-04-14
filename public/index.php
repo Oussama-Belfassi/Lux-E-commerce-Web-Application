@@ -52,11 +52,13 @@ try {
         'title' => '403 Forbidden',
         'file'  => '403',
     ]);
-} catch (\Exception $e) {
+} } catch (\Exception $e) {
     error_log('Unhandled exception: ' . $e->getMessage());
     http_response_code(500);
-    $router->renderView('pages/500', [
-        'title' => '500 — Server Error',
-        'file'  => '500',
-    ]);
+    echo '<pre style="background:#fff;color:red;padding:20px;">';
+    echo '<strong>Error:</strong> ' . $e->getMessage() . "\n\n";
+    echo '<strong>File:</strong> ' . $e->getFile() . ':' . $e->getLine() . "\n\n";
+    echo '<strong>Trace:</strong>' . "\n" . $e->getTraceAsString();
+    echo '</pre>';
+    exit;
 }
