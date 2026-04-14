@@ -5,7 +5,8 @@ RUN apt-get update && apt-get install -y \
     unzip \
     git \
     libonig-dev \
-    && docker-php-ext-install pdo pdo_mysql mysqli mbstring \
+    libcurl4-openssl-dev \
+    && docker-php-ext-install pdo pdo_mysql mysqli mbstring curl \
     && a2enmod rewrite
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
