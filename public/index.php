@@ -44,6 +44,16 @@ $router->post('/forgot-password',  [$pages, 'forgotPassword']);
 $router->get('/reset-password',    [$pages, 'resetPassword']);
 $router->post('/reset-password',   [$pages, 'resetPassword']);
 
+$router->get('/test-mail', function($router) {
+    $result = \app\Mailer::send(
+        $_ENV['MAIL_ADMIN'],
+        'Test email from Railway',
+        '<p>This is a test email.</p>'
+    );
+    echo $result ? 'Email sent!' : 'Email FAILED!';
+    exit;
+});
+
 try {
     $router->resolve();
 } catch (\app\exceptions\ForbiddenException $e) {
