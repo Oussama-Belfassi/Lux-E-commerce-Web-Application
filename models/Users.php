@@ -8,7 +8,7 @@ class Users
 {
     public int $id = 0;
     public string $email = '';
-    public string $password = '';
+    public ?string $password = null;
     public string $Firstname = '';
     public string $Lastname = '';
     public string $message = '';
@@ -118,7 +118,7 @@ class Users
         $user = new static();
         $user->id = $row['id'];
         $user->email = $row['email'];
-        $user->password = $row['password'];
+        $user->password = $row['password'] ?? null;
         $user->Lastname = $row['Lastname'];
         $user->Firstname = $row['Firstname'];
 
@@ -136,7 +136,7 @@ class Users
         $user = new static();
         $user->id = $row['id'];
         $user->email = $row['email'];
-        $user->password = $row['password'];
+        $user->password = $row['password'] ?? null;
         $user->Lastname = $row['Lastname'];
         $user->Firstname = $row['Firstname'];
 
