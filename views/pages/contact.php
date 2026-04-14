@@ -1,8 +1,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/2.3.1/list.min.js"></script>
 
 <form class="row g-3" action="" method="post">
-
-    <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($csrfToken) ?>">
     
     <div class="head">
         <h4>Contact Us</h4>

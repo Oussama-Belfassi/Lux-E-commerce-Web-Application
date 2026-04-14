@@ -157,7 +157,6 @@ class PagesController
             $user = new Users();
             $user->load($userData);
             $errors = $user->saveContact();
-            error_log('CONTACT ERRORS: ' . print_r($errors, true));
 
             if (empty($errors)) {
                 $router->session->setFlash('success', 'Thanks for contacting us');
@@ -202,11 +201,10 @@ class PagesController
         }
 
         $router->renderView('pages/contact', [
-            'userData'  => $userData,
-            'errors'    => $errors,
-            'title'     => 'Contact',
-            'file'      => 'Contact',
-            'csrfToken' => $router->session->getCsrfToken(), // ADD THIS
+            'userData' => $userData,
+            'errors'   => $errors,
+            'title'    => 'Contact',
+            'file'     => 'Contact',
         ]);
     }
 
