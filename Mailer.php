@@ -65,8 +65,10 @@ class Mailer
             $mail->Body    = $body;
 
             $mail->send();
+            error_log('Email sent successfully to: ' . $to);
             return true;
         } catch (Exception $e) {
+            error_log('Mailer error sending to ' . $to . ': ' . $e->getMessage());
             return false;
         }
     }
