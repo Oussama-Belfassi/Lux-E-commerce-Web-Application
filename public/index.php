@@ -52,7 +52,7 @@ try {
         'title' => '403 Forbidden',
         'file'  => '403',
     ]);
-} } catch (\Exception $e) {
+}catch (\Exception $e) {
     error_log('Unhandled exception: ' . $e->getMessage());
     http_response_code(500);
     echo '<pre style="background:#fff;color:red;padding:20px;">';
