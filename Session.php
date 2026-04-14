@@ -9,6 +9,11 @@ class Session
     public function __construct()
     {
         if (session_status() === PHP_SESSION_NONE) {
+            ini_set('session.cookie_secure', '1');
+            ini_set('session.cookie_samesite', 'Lax');
+            ini_set('session.cookie_httponly', '1');
+            ini_set('session.gc_maxlifetime', '3600');
+            session_save_path('/tmp');
             session_start();
         }
 
@@ -36,7 +41,6 @@ class Session
 
     public function __destruct()
     {
-        // Guard: if destroy() was already called, session is gone — don't touch $_SESSION
         if (session_status() !== PHP_SESSION_ACTIVE) {
             return;
         }
@@ -68,8 +72,6 @@ class Session
     public function destroy(): void
     {
         $_SESSION = [];
-
-        // Expire the cookie in the browser immediately
 
         if (ini_get('session.use_cookies')) {
             $params = session_get_cookie_params();
