@@ -170,19 +170,26 @@ class Users
             $errors['message'][] = 'Message cannot exceed 1000 characters.';
         }
 
+        $this->phone = preg_replace('/[\s\-().]+/', '', $this->phone);
+
         if (!empty($this->phone) && !preg_match('/^\d{6,15}$/', $this->phone)) {
             $errors['phonenumber'][] = 'Phone number is not valid.';
         }
 
         if (empty($errors)) {
-            Database::$db->insertContact([
-                'email'     => $this->email,
-                'Firstname' => $this->Firstname,
-                'Lastname'  => $this->Lastname,
-                'message'   => $this->message,
-                'phone'     => $this->phone,
-                'prefix'    => $this->prefix,
-            ]);
+            try {
+                Database::$db->insertContact([
+                    'email'     => $this->email,
+                    'Firstname' => $this->Firstname,
+                    'Lastname'  => $this->Lastname,
+                    'message'   => $this->message,
+                    'phone'     => $this->phone,
+                    'prefix'    => $this->prefix,
+                ]);
+            } catch (\Exception $e) {
+                error_log('insertContact failed: ' . $e->getMessage());
+                $errors['general'][] = 'Could not save your message. Please try again.';
+            }
         }
 
         return $errors;

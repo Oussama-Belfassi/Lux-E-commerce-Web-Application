@@ -157,6 +157,7 @@ class PagesController
             $user = new Users();
             $user->load($userData);
             $errors = $user->saveContact();
+            error_log('CONTACT ERRORS: ' . print_r($errors, true));
 
             if (empty($errors)) {
                 $router->session->setFlash('success', 'Thanks for contacting us');
