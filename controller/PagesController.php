@@ -202,10 +202,11 @@ class PagesController
         }
 
         $router->renderView('pages/contact', [
-            'userData' => $userData,
-            'errors'   => $errors,
-            'title'    => 'Contact',
-            'file'     => 'Contact',
+            'userData'  => $userData,
+            'errors'    => $errors,
+            'title'     => 'Contact',
+            'file'      => 'Contact',
+            'csrfToken' => $router->session->getCsrfToken(), // ADD THIS
         ]);
     }
 
