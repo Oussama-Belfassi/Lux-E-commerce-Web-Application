@@ -14,12 +14,14 @@ class Mailer
         $this->mail = new PHPMailer(true);
 
         $this->mail->isSMTP();
-        $this->mail->Host       = $_ENV['MAIL_HOST'];
-        $this->mail->SMTPAuth   = true;
-        $this->mail->Username   = $_ENV['MAIL_USERNAME'];
-        $this->mail->Password   = $_ENV['MAIL_PASSWORD'];
-        $this->mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-        $this->mail->Port       = (int) $_ENV['MAIL_PORT'];
+        $this->mail->Host          = $_ENV['MAIL_HOST'];
+        $this->mail->SMTPAuth      = true;
+        $this->mail->Username      = $_ENV['MAIL_USERNAME'];
+        $this->mail->Password      = $_ENV['MAIL_PASSWORD'];
+        $this->mail->SMTPSecure    = PHPMailer::ENCRYPTION_STARTTLS;
+        $this->mail->Port          = (int) $_ENV['MAIL_PORT'];
+        $this->mail->Timeout       = 5;
+        $this->mail->SMTPKeepAlive = false;
 
         $this->mail->setFrom($_ENV['MAIL_FROM'], $_ENV['MAIL_FROM_NAME']);
         $this->mail->isHTML(true);
@@ -47,12 +49,14 @@ class Mailer
         $mail = new PHPMailer(true);
         try {
             $mail->isSMTP();
-            $mail->Host       = $_ENV['MAIL_HOST'];
-            $mail->SMTPAuth   = true;
-            $mail->Username   = $_ENV['MAIL_USERNAME'];
-            $mail->Password   = $_ENV['MAIL_PASSWORD'];
-            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-            $mail->Port = (int) $_ENV['MAIL_PORT'];
+            $mail->Host          = $_ENV['MAIL_HOST'];
+            $mail->SMTPAuth      = true;
+            $mail->Username      = $_ENV['MAIL_USERNAME'];
+            $mail->Password      = $_ENV['MAIL_PASSWORD'];
+            $mail->SMTPSecure    = PHPMailer::ENCRYPTION_STARTTLS;
+            $mail->Port          = (int) $_ENV['MAIL_PORT'];
+            $mail->Timeout       = 5;
+            $mail->SMTPKeepAlive = false;
 
             $mail->setFrom($_ENV['MAIL_FROM'], $_ENV['MAIL_FROM_NAME']);
             $mail->addAddress($to);
