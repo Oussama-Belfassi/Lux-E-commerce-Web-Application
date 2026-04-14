@@ -9,6 +9,9 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-install pdo pdo_mysql mysqli mbstring curl \
     && a2enmod rewrite
 
+RUN echo "log_errors = On" >> /usr/local/etc/php/php.ini && \
+    echo "error_log = /dev/stderr" >> /usr/local/etc/php/php.ini
+
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 WORKDIR /app
